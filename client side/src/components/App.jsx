@@ -26,9 +26,9 @@ function App() {
     });
   }
 
-  function handleEdit(id, updatedExpense) {
+  function handleEdit(id, updatedExpense) { 
     setExpenses(prevExpenses => {
-      prevExpenses.map((expenseItem) => {
+      return prevExpenses.map((expenseItem) => {
         if (expenseItem.id === id) {
           return {...expenseItem, ...updatedExpense};
         } else {
