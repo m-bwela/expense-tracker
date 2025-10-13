@@ -15,25 +15,49 @@ body {
 
 .container {
     max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
+    margin: 20px auto;
+    padding: 15px;
     background-color: #253900;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    width: 95%;
+}
+
+@media (min-width: 768px) {
+    .container {
+        margin: 50px auto;
+        padding: 20px;
+        width: 90%;
+    }
 }
 
 h1 {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #fff;
 }
 
 h2 {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
 }
 
 form {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 20px;
 }
@@ -42,6 +66,7 @@ form input, form select, form button {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    flex: 1 0 calc(50% - 10px); /* 2 items per row on mobile */
 }
 
 form button {
@@ -49,16 +74,34 @@ form button {
     color: white;
     border: none;
     cursor: pointer;
+    flex: 1 0 100%; /* Full width button */
+    margin-top: 10px;
 }
 
 form button:hover {
     background-color: #218838;
 }
 
+@media (min-width: 768px) {
+    form input, form select {
+        flex: 1;
+    }
+    
+    form button {
+        flex: 0 0 auto;
+        margin-top: 0;
+    }
+}
+
+.expense-table {
+    overflow-x: auto; /* Enable horizontal scrolling on small screens */
+}
+
 .expense-table table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    min-width: 600px; /* Ensure table doesn't get too small */
 }
 
 .expense-table th, .expense-table td {
@@ -71,24 +114,70 @@ form button:hover {
     background-color: #4E9F3D;
 }
 
+@media (max-width: 767px) {
+    .expense-table td, .expense-table th {
+        padding: 8px 5px;
+        font-size: 14px;
+    }
+}
+
 .total-amount {
     text-align: right;
     font-size: 18px;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: rgba(78, 159, 61, 0.2);
+    border-radius: 4px;
+    color: #fff;
+}
+
+.total-amount strong {
+    margin-right: 5px;
+}
+
+#total-amount {
+    font-weight: bold;
+    color: #4E9F3D;
 }
 
 .filter-categories {
     margin-bottom: 20px;
-    text-align: right;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
-.filter label {
-    margin-right: 10px;
+.filter-categories label {
+    margin-bottom: 10px;
+    color: #fff;
 }
 
-.filter select {
+.filter-categories select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .filter-categories {
+        text-align: right;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    
+    .filter-categories label {
+        margin-right: 10px;
+        margin-bottom: 0;
+    }
+    
+    .filter-categories select {
+        width: auto;
+        margin: 0;
+    }
 }
 
 .fa {
@@ -150,7 +239,42 @@ form button:hover {
 
 .footer {
     text-align: center;
-    margin-top: 50px;
-    font-size: 14px;
+    margin-top: 30px;
+    padding-top: 20px;
+    font-size: 13px;
     color: #EEEEEE;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 768px) {
+    .footer {
+        margin-top: 50px;
+        font-size: 14px;
+    }
+}
+
+/* General mobile improvements */
+@media (max-width: 767px) {
+    /* Adjust social icons spacing */
+    .fa-github, .fa-linkedin, .fa-twitter, .fa-instagram {
+        margin-left: 5px;
+        padding: 8px;
+        font-size: 9px;
+    }
+    
+    /* Add space between elements */
+    .expense-table, .filter-categories, .total-amount {
+        margin-top: 15px;
+    }
+    
+    /* Make sure buttons are large enough to tap */
+    button {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Better spacing for small screens */
+    .container > * {
+        margin-bottom: 15px;
+    }
 }
