@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../config//db'); // Assuming you have a db.js file exporting your database pool
+const pool = require('../config/db');
+const auth = require('../middleware/auth');
 
 // Get all expenses
 router.get('/', auth, async (req, res) => {
@@ -21,7 +22,7 @@ router.post('/', auth, async (req, res) => {
     const { name, amount, category, date } = req.body;
     try {
         const newExpense = await pool.query(
-            'INSERT INTO expenses (user_id, name, amount, category, date) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+            'INSERT INTO expenses (user_id, expense_name, amount, category, date) VALUES ($1, $2, $3, $4, $5) RETURNING *',
             [req.user.id, name, amount, category, date]
         );
         res.json(newExpense.rows[0]);
@@ -37,7 +38,7 @@ router.put('/:id', auth, async (req, res) => {
     const { name, amount, category, date } = req.body;
     try {
         const updatedExpense = await pool.query(
-            'UPDATE expenses SET name = $1, amount = $2, category = $3, date = $4 WHERE id = $5 AND user_id = $6 RETURNING *',
+            'UPDATE expenses SET expense_name = $1, amount = $2, category = $3, date = $4 WHERE id = $5 AND user_id = $6 RETURNING *',
             [name, amount, category, date, id, req.user.id]
         );
         res.json(updatedExpense.rows[0]);
