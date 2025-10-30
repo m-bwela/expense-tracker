@@ -278,3 +278,162 @@ form button:hover {
         margin-bottom: 15px;
     }
 }
+
+/* Auth Forms */
+.auth-form {
+  max-width: 450px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #253900;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 10px;
+  background-color: #4E9F3D;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-primary:hover {
+  background-color: #3a8a2a;
+}
+
+.auth-form p {
+  text-align: center;
+  margin-top: 15px;
+  color: #fff;
+}
+
+.auth-form a {
+  color: #4E9F3D;
+  text-decoration: none;
+}
+
+.auth-form a:hover {
+  text-decoration: underline;
+}
+
+.alert-danger {
+  padding: 10px;
+  background-color: rgba(255, 0, 0, 0.2);
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 767px) {
+  .auth-form {
+    width: 95%;
+    margin: 30px auto;
+  }
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #1a2a00;
+  padding: 15px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-left h3 {
+  color: #4E9F3D;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-name {
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.logout-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+}
+
+@media (max-width: 767px) {
+  .navbar-content {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  
+  .navbar-left h3 {
+    font-size: 1.2rem;
+  }
+  
+  .navbar-right {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .user-name {
+    font-size: 0.85rem;
+  }
+  
+  .logout-btn {
+    width: 100%;
+    padding: 10px;
+  }
+}

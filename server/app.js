@@ -14,10 +14,10 @@ app.get('/', (req, res) => {
 });
 
 // Routes
+app.use('/api/auth', require('./routes/auth'));
 app.use('/api/expenses', require('./routes/expenses'));
 
-// TODO: Add these routes when you create login/register functionality
+// TODO: Add users routes when needed
 // app.use('/api/users', require('./routes/users'));
-// app.use('/api/auth', require('./routes/auth'));
 
 module.exports = app;
