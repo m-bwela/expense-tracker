@@ -19,11 +19,11 @@ router.get('/', auth, async (req, res) => {
 
 // Add a new expense
 router.post('/', auth, async (req, res) => {
-    const { name, amount, category, date } = req.body;
+    const { expense_name, amount, category, expense_date } = req.body;
     try {
         const newExpense = await pool.query(
             'INSERT INTO expenses (user_id, expense_name, amount, category, date) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-            [req.user.id, name, amount, category, date]
+            [req.user.id, expense_name, amount, category, expense_date]
         );
         res.json(newExpense.rows[0]);
     } catch (error) {
@@ -35,11 +35,11 @@ router.post('/', auth, async (req, res) => {
 // Update an expense
 router.put('/:id', auth, async (req, res) => {
     const { id } = req.params;
-    const { name, amount, category, date } = req.body;
+    const { expense_name, amount, category, expense_date } = req.body;
     try {
         const updatedExpense = await pool.query(
             'UPDATE expenses SET expense_name = $1, amount = $2, category = $3, date = $4 WHERE id = $5 AND user_id = $6 RETURNING *',
-            [name, amount, category, date, id, req.user.id]
+            [expense_name, amount, category, expense_date, id, req.user.id]
         );
         res.json(updatedExpense.rows[0]);
     } catch (error) {
