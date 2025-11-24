@@ -4,9 +4,20 @@ require('dotenv').config();
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// Trust proxy (needed for deployment platforms like Render, Railway, etc.)
+app.set('trust proxy', 1);
+
+// CORS configuration
+const corsOptions = {
+    origin: process.env.CORS_ORIGIN || '*',
+    credentials: true,
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
+// Body parser middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Test route
 app.get('/', (req, res) => {
