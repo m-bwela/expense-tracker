@@ -5,7 +5,7 @@ export default function Footer() {
     const year = new Date().getFullYear();
     return (
         <footer className="footer">
-            <p>&copy; {year} Personal Expense Tracker. All rights reserved.</p>
+            <p>2025 - &copy; {year} Personal Expense Tracker. All rights reserved.</p>
             <p>Created by {yourName}</p>
             <p>Follow me on:</p>
             <a className="fa fa-linkedin" href="https://www.linkedin.com/in/tye-nzambu-07254muzan"></a>
